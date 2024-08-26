@@ -24,10 +24,11 @@ public class Main
 //		numbers.stream().map(item -> item * item).forEach(System.out::println);
 		// filter - dùng để lọc các mảng theo 1 điều kiện
 //		Predicate<Integer> checkEven = number -> number % 2 == 0;
-		numbers.stream().filter(number -> number % 2 == 0).forEach(item ->
-		{
-			System.out.print(item + " ");
-		});
+//		numbers.stream().filter(number -> number % 2 == 0).forEach(item ->
+//		{
+//			System.out.print(item + " ");
+//		});
+		
 		
 		// 1 mảng student -> muốn lấy ra sinh viên có id = 10
 //		Optional<Student> optionalStudent = students.stream().filter(item -> item.getId() == 2).findFirst();
@@ -67,14 +68,31 @@ public class Main
 //			student.setAge(student.getAge() + 10);
 //			return student;
 //		};
-		List<Student> newStudent = students.stream().map(student ->
-		{
-			student.setAge(student.getAge() + 10);
-			return student;
-		}).toList();
-		System.out.println("students = " + students);
+//		List<Student> newStudent = students.stream().map(student ->
+//		{
+//			student.setAge(student.getAge() + 10);
+//			return student;
+//		}).toList();
+//		System.out.println("students = " + students);
 		// toArray
+
+//		numbers.toArray();
+//
+//
+//		boolean isExist = students.stream().anyMatch(item -> item.getName().equals("Dương"));
+//		if (isExist)
+//		{
+//			System.err.println("Đã tồn tại");
+//		}
+//		else
+//		{
+//			System.out.println("Chưa tồn tại");
+//		}
 		
-		numbers.toArray();
+		students.stream()
+				  .sorted(Comparator.comparing(Student::getName).reversed())
+				  .limit(2)
+				  .forEach(System.out::println);
+		
 	}
 }
